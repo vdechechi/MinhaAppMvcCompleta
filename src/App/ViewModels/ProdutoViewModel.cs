@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel;
 using System;
 using Microsoft.AspNetCore.Http;
+using Business.Models;
 
 namespace App.ViewModels
 {
@@ -12,6 +13,7 @@ namespace App.ViewModels
 
         [Key]
         public Guid Id { get; set; }
+
         [Required(ErrorMessage = "O campo {0} é obrigatorio")]
         [DisplayName("Fornecedor")]
         public Guid FornecedorId { get; set; }
@@ -32,9 +34,11 @@ namespace App.ViewModels
         [DisplayName("Ativo?")]
         public bool Ativo { get; set; }
         /* Entity Framework Relation */
-        [NotMapped]
+        
         public FornecedorViewModel Fornecedor { get; set; }
-    
+
+        public IEnumerable<FornecedorViewModel> Fornecedores { get; set; }
+
 
 
     }
