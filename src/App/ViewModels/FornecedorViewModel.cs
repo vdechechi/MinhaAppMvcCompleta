@@ -2,6 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel;
 using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace App.ViewModels
 {
@@ -23,6 +24,8 @@ namespace App.ViewModels
         [DisplayName("Ativo ?")]
         public bool Ativo { get; set; }
         /* Entity Framework Relations */
+
+        [NotMapped]
         public IEnumerable<ProdutoViewModel> Produtos { get; set; }
     }
 }

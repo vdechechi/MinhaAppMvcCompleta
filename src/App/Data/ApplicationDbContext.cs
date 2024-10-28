@@ -15,5 +15,6 @@ namespace App.Data
         }
         public DbSet<App.ViewModels.FornecedorViewModel> FornecedorViewModel { get; set; }
         public DbSet<App.ViewModels.ProdutoViewModel> ProdutoViewModel { get; set; }
+        public DbSet<App.ViewModels.EnderecoViewModel> EnderecoViewModel { get; set; }
     }
 }
