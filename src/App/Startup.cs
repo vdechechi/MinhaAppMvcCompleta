@@ -1,4 +1,5 @@
 using App.Data;
+using AutoMapper;
 using Business.Interfaces;
 using Data.Context;
 using Data.Repository;
@@ -48,6 +49,8 @@ namespace App
             services.AddScoped<IProdutoRepository, ProdutoRepository>();
             services.AddScoped<IFornecedorRepository, FornecedorRepository>();
             services.AddScoped<IEnderecoRepository, EnderecoRepository>();
+
+            services.AddAutoMapper(typeof(Startup));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
