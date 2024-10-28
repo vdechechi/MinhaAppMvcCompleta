@@ -1,16 +1,15 @@
 ﻿@model App.ViewModels.ProdutoViewModel
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Novo Produto";
 }
 
-<h1>Create</h1>
-
-<h4>ProdutoViewModel</h4>
+<h1>@ViewData["Title"]</h1>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create">
+        <form enctype="multipart/form-data" asp-action="Create">
+
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
@@ -32,9 +31,13 @@
                 <span asp-validation-for="Descricao" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Imagem" class="control-label"></label>
-                <input asp-for="Imagem" class="form-control" />
-                <span asp-validation-for="Imagem" class="text-danger"></span>
+                <label asp-for="ImagemUpload" class="control-label"></label>
+                <div class="custom-file">
+                    <input type="file" id="ImagemUpload" class="custom-file-input" asp-for="ImagemUpload"/>
+                    <label data-browse="Procurar" style="width: 400px; cursor: pointer " class="custom-file-label" for="ImagemUpload" ></label>
+                    <label style="display: none" id="img_nome"></label>
+                </div>
+                <span asp-validation-for="ImagemUpload" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Valor" class="control-label"></label>
@@ -47,16 +50,30 @@
                 </label>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+
+                <input type="submit" value="Cadastrar" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-info">Voltar</a>
+
             </div>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRNaPqc4RZ5M/mc4bF9hbC61/Eq4t3TYnqQeMEFS2" crossorigin="anonymous"></script>
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script>
+        $("#ImagemUpload").change(function () {
+            $("#img_nome").text(this.files[0].name);
+            $("#img_nome")[0].style.display = 'block';
+        });
+
+        $("#ImagemUpload").attr("data-val", "true");
+        $("#ImagemUpload").attr("data-val-required", "Preencha o campo imagem");
+    </script>
 }
+
