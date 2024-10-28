@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System;
 using Microsoft.AspNetCore.Http;
 using Business.Models;
+using App.Extensions;
 
 namespace App.ViewModels
 {
@@ -29,6 +30,7 @@ namespace App.ViewModels
         public IFormFile ImagemUpload { get; set; }
         public string Imagem { get; set; }
         [Required]
+        [Moeda]
         public decimal Valor { get; set; }
         [Required(ErrorMessage = "O campo {0} é obrigatorio")]
         [ScaffoldColumn(false)]
