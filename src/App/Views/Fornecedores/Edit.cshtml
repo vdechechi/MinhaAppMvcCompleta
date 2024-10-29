@@ -48,6 +48,7 @@
 
     <div class="form-group">
         <input type="submit" value="Salvar" class="btn btn-primary" />
+        
     </div>
 </form>
 
@@ -60,7 +61,8 @@
 <div>
     <partial name="../Produtos/_ListaProdutos" model="@Model.Produtos" />
 </div>
-
+<br />
+<a class="btn btn-info" asp-action="Index">Voltar</a>
 <div id="myModal" class="modal fade in">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -68,6 +70,8 @@
         </div>
     </div>
 </div>
+
+
 
 @section Scripts {
     @{

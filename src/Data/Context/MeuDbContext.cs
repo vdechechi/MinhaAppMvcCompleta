@@ -26,21 +26,7 @@ namespace Data.Context
 
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(MeuDbContext).Assembly);
 
-            // Configura a exclusão em cascata para Fornecedores e seus Endereços associados
-            modelBuilder.Entity<Fornecedor>()
-            .HasOne(f => f.Endereco)
-            .WithOne(e => e.Fornecedor)
-            .HasForeignKey<Endereco>(e => e.FornecedorId)
-            .OnDelete(DeleteBehavior.Cascade);
-
-            // Define o comportamento padrão para outros relacionamentos
-            foreach (var relationship in modelBuilder.Model.GetEntityTypes().SelectMany(e => e.GetForeignKeys()))
-            {
-                if (relationship.PrincipalEntityType.ClrType != typeof(Fornecedor) || relationship.DeclaringEntityType.ClrType != typeof(Endereco))
-                {
-                    relationship.DeleteBehavior = DeleteBehavior.ClientSetNull;
-                }
-            }
+            foreach (var relationship in modelBuilder.Model.GetEntityTypes().SelectMany(e => e.GetForeignKeys())) relationship.DeleteBehavior = DeleteBehavior.ClientSetNull;
 
             base.OnModelCreating(modelBuilder);
         }

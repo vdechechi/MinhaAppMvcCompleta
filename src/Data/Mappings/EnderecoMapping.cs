@@ -1,20 +1,11 @@
 ﻿using Business.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Data.Mappings
 {
-    internal class EnderecoMapping : IEntityTypeConfiguration<Endereco>
+    public class EnderecoMapping : IEntityTypeConfiguration<Endereco>
     {
-
-        public EnderecoMapping()
-        {
-            
-        }
-
         public void Configure(EntityTypeBuilder<Endereco> builder)
         {
             builder.HasKey(p => p.Id);
@@ -32,7 +23,6 @@ namespace Data.Mappings
                 .HasColumnType("varchar(8)");
 
             builder.Property(c => c.Complemento)
-                .IsRequired()
                 .HasColumnType("varchar(250)");
 
             builder.Property(c => c.Bairro)
@@ -43,7 +33,7 @@ namespace Data.Mappings
                 .IsRequired()
                 .HasColumnType("varchar(100)");
 
-            builder.Property(c => c.Logradouro)
+            builder.Property(c => c.Estado)
                 .IsRequired()
                 .HasColumnType("varchar(50)");
 
