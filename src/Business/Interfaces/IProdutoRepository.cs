@@ -1,18 +1,14 @@
-﻿using Business.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
+using Business.Models;
 
 namespace Business.Interfaces
 {
     public interface IProdutoRepository : IRepository<Produto>
     {
-
-        Task<Produto> ObterProdutoFornecedor(Guid id); //Lista de produtos e fornecedores daquele produto
-        Task<IEnumerable<Produto>> ObterProdutosPorFornecedores(Guid fornecedorId); //Retorna uma Lista de produtos por fornecedor
-        Task<IEnumerable<Produto>> ObterProdutosFornecedores(); //Retorna um produto e seu fornecedor
-
-       
+        Task<IEnumerable<Produto>> ObterProdutosPorFornecedor(Guid fornecedorId);
+        Task<IEnumerable<Produto>> ObterProdutosFornecedores();
+        Task<Produto> ObterProdutoFornecedor(Guid id);
     }
 }

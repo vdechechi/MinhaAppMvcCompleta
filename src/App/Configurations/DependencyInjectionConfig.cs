@@ -2,6 +2,8 @@
 using App.Extensions;
 using AutoMapper;
 using Business.Interfaces;
+using Business.Notificacoes;
+using Business.Services;
 using Data.Context;
 using Data.Repository;
 using Microsoft.AspNetCore.Builder;
@@ -24,7 +26,14 @@ namespace App.Configurations
             services.AddScoped<IProdutoRepository, ProdutoRepository>();
             services.AddScoped<IFornecedorRepository, FornecedorRepository>();
             services.AddScoped<IEnderecoRepository, EnderecoRepository>();
+
+            services.AddScoped<INotificador, Notificador>();
+            services.AddScoped<IFornecedorService, FornecedorService>();
+            services.AddScoped<IProdutoService, ProdutoService>();
+
+
             services.AddAutoMapper(typeof(Startup));
+            
 
 
 

@@ -8,8 +8,8 @@ using Microsoft.EntityFrameworkCore;
 using App.Data;
 using App.ViewModels;
 using AutoMapper;
-using Business.Interfaces;
 using Business.Models;
+using Business.Interfaces;
 
 namespace App.Controllers
 {

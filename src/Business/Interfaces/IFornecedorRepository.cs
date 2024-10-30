@@ -1,19 +1,13 @@
-﻿using Business.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq.Expressions;
-using System.Text;
+﻿using System;
 using System.Threading.Tasks;
+using Business.Models;
 
 namespace Business.Interfaces
 {
-    public interface IFornecedorRepository: IRepository<Fornecedor>
+    public interface IFornecedorRepository : IRepository<Fornecedor>
     {
-
         Task<Fornecedor> ObterFornecedorEndereco(Guid id);
-
         Task<Fornecedor> ObterFornecedorProdutosEndereco(Guid id);
-     
-
     }
 }
+

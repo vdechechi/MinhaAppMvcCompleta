@@ -1,17 +1,13 @@
-﻿using Business.Models;
-using System;
+﻿using System;
 using System.Threading.Tasks;
+using Business.Models;
 
 namespace Business.Interfaces
 {
-    internal interface IProdutoService
+    public interface IProdutoService : IDisposable
     {
-
-
-        Task Adicionar(Produto produto );
+        Task Adicionar(Produto produto);
         Task Atualizar(Produto produto);
         Task Remover(Guid id);
-
-
     }
 }
